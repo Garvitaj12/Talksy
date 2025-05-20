@@ -7,9 +7,9 @@ Clone the project : git clone https://github.com/username/repo-name.git
 
 Stage changes : git add .
 Commit with a message : git commit -m "Added login form"
-Push to GitHubv: git push origin main  # or whatever branch you're on
+Push to GitHubv: git push origin   # or whatever branch you're on
 
-Before working every day, pull new changes : git pull origin main
+Before working every day, pull new changes : git pull origin 
 
 
 -----------GitHub Branch---------------------
@@ -20,12 +20,12 @@ Stage, Commit, Push the Branch : git add .
                                 git commit -m "Built initial chat UI"
                                 git push origin feature/chat-ui
 Go to your repo → Click "Compare & Pull Request"
-Target : feature/chat-ui → main
+Target : feature/chat-ui → 
 
-Merge to main Only When Ready : git checkout main
-                                git pull origin main
+Merge to  Only When Ready : git checkout 
+                                git pull origin 
                                 git merge feature/chat-ui
-                                git push origin main
+                                git push origin 
 
 
 Optional: Delete the branch after merge : git branch -d feature/chat-ui         # local
