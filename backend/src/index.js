@@ -8,13 +8,21 @@ import messageRoutes from "./routes/message.route.js";
 import { app, server } from "./lib/socket.js";
 
 import path from "path";
+import { fileURLToPath } from "url";
 
-dotenv.config()
+
+dotenv.config({ path: "./backend/.env" });
+
+// dotenv.config()
 // const app = express();
 
 
 const PORT = process.env.PORT
-const __dirname = path.resolve();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// const __dirname = path.resolve();
 
 app.use(express.json({ limit: '5mb' })); // or higher like '10mb'
 app.use(express.urlencoded({ extended: true, limit: '5mb' }));
@@ -40,9 +48,13 @@ app.use("/api/messages", messageRoutes)
 // }
 
 
+
+
 if (process.env.NODE_ENV === "production") {
 
   const frontendPath = path.resolve(__dirname, "../../frontend/dist");
+
+  console.log("Serving frontend from:", frontendPath);
 
   app.use(express.static(frontendPath));
 
@@ -50,6 +62,8 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(frontendPath, "index.html"));
   });
 }
+
+
 
 
 
